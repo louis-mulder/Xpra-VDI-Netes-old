@@ -1,5 +1,6 @@
 # Xpra-VDI-Netes
 Virtual Desktops under Kubernetes
+
 How to deploy XPRA-VDI-NETES on a Kubernetes Cluster.
 
 Requirements:
@@ -14,6 +15,7 @@ Requirements:
        a parameter is involved to add some demo-users. They will be added to the
        local passwd-file of the proxy-server. (xpra-user01 -- xpra-user09)
     5) A number of container-images containing Xpra and X11 based applications.
+    
 
 Deployment:
 
@@ -33,6 +35,10 @@ Deployment:
        Copy the whole vdi-dist directory to the destination.
        (Example: cd /data/srv/vdi-stp
                  (cd ../vdi-dist; tar cf - .) | tar xvf -
+    4) Goto ..../vdi-stp.images/vdi-base and download with
+       wget xz file centos-7-docker.tar.xz. URL:
+       https://raw.githubusercontent.com/luxknight007/centos7/master/centos-7-docker.tar.xz. It should be
+       also available in the other subdirectories ../vdi-xfce4 etc. The file is hardlinked to the other directories.
     4) Go to ...../vdi-stp/deploy and edit the script xpra-proxy.sh
     5) Edit the parameters which are now set to 'CHANGEME'
     6) If images are already builded perform from this directory,
@@ -201,6 +207,9 @@ Remarks:
   if this occurs:  Warning  Evicted              3m55s (x2 over 4m36s)  kubelet, vdi-worker01.vdi.sue.nl  The node was low on resource: ephemeral-storage.
   Means in most cases a worker of the K8-cluster has not enough free diskspace left-over (mostly / (root)). Or limit the logging space in the file /etc/daemon.json by
   setting some parameters. (see documentation of Kubernetes or try a Google search)
+  
+TODO:
+A lot!! For example: Better documentation. 
 
 Louis Mulder
 louis.mulder@sue.nl
