@@ -58,9 +58,9 @@ image must be first in the local cache of the worker. Wait for 1 a 2 minutes and
 	
 On a linux desktop you use the Xpra client as follows:
 
-xpra attach wss://xpra-user01:only4now@<external ip-address>:443/desktop --ssl-ca-certs=< The ca_certs file contains a set of concatenated 'certification authority' certificates> See also man xpra.
+xpra attach wss://xpra-user01:only4now@external ip-address:443/desktop --ssl-ca-certs=< The ca_certs file contains a set of concatenated 'certification authority' certificates> See also man xpra.
 	
-xpra attach ssh://xpra-user01:only4now@<external ip-address>:443/desktop (or seamless or seamless-office etc.)
+xpra attach ssh://xpra-user01:only4now@external ip-address:443/desktop (or seamless or seamless-office etc.)
 (tunneling with ssh through the pod is not possible, session is using paramiko and there is no sshd running in the pod)
 
 For using under Windows make first config-files with the options, see also the documentation on the web about Xpra.
