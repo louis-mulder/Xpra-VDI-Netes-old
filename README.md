@@ -39,14 +39,31 @@ Deployment:
        wget xz file centos-7-docker.tar.xz. URL:
        https://raw.githubusercontent.com/luxknight007/centos7/master/centos-7-docker.tar.xz. It should be
        also available in the other subdirectories ../vdi-xfce4 etc. The file is hardlinked to the other directories.
-    4) Go to ...../vdi-stp/deploy and edit the script xpra-proxy.sh
-    5) Edit the parameters which are now set to 'CHANGEME'
-    6) If images are already builded perform from this directory,
+    5) Create or provide in the subdirectory .../vdi-stp/ssl certificates (server.key and a ca.crt)
+    6) Go to ...../vdi-stp/deploy and edit the script xpra-proxy.sh
+    7) Edit the parameters which are now set to 'CHANGEME'
+    8) If images are already builded perform from this directory,
           ./xpra-proxy.sh
        Or use ./xpra-proxy.sh --buildimages=yes
        With this option build the images and pushed to the 
        registry server. (Image names are the dirname of the directory
        where the Dockerfile resides)
+       
+How to use:
+
+After deployment and demo users is set to Y you can do for example with a browser accessing a desktop:
+https://<external address>/desktop.html, you will see connect-page, fill in xpra-user01 and password only4now
+portnumber can be left empty. In the kubernetes cluster a pod will be starting but it will probably timeout because the
+image must be first in the local cache of the worker. Wait for 1 a 2 minutes and try again. Or perform first a docker pull <imagename> before accessing desktops and seamless sessions.
+	
+On a linux desktop you use the Xpra client as follows:
+
+xpra attach wss://xpra-user01:only4now@<external ip-address>:443/desktop --ssl-ca-certs=< The ca_certs file contains a set of concatenated 'certification authority' certificates> See also man xpra.
+	
+xpra attach ssh://xpra-user01:only4now@<external ip-address>:443/desktop (or seamless or seamless-office etc.)
+(tunneling with ssh through the pod is not possible, session is using paramiko and there is no sshd running in the pod)
+
+For using under Windows make first config-files with the options, see also the documentation on the web about Xpra.
 
 Some remarks:
 
