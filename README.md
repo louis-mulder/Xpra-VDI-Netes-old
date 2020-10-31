@@ -221,7 +221,7 @@ Directory structure:
          
 Remarks:
 
-  if this occurs:  Warning  Evicted              3m55s (x2 over 4m36s)  kubelet, vdi-worker01.vdi.sue.nl  The node was low on resource: ephemeral-storage.
+  if this occurs:  Warning  Evicted              3m55s (x2 over 4m36s)  kubelet, vdi-worker01.vdi.demo.xpra  The node was low on resource: ephemeral-storage.
   Means in most cases a worker of the K8-cluster has not enough free diskspace left-over (mostly / (root)). Or limit the logging space in the file /etc/daemon.json by
   setting some parameters. (see documentation of Kubernetes or try a Google search)
   
